@@ -1,0 +1,75 @@
+.omdbheader{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo{
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(90.4deg, #efc42c -21.68%, #f35748 55.26%, #ee6abc 134.07%);
+    /* -webkit-background-clip: text; */
+    background-clip: text;
+    font-weight:900;
+}
+
+.tabs{
+    display: flex;
+    padding:1rem 2.4rem;
+    gap: 2.4rem;
+    border-radius: 2.6rem;
+    border: 1px solid #914dca40;
+    background-image: radial-gradient(circle, #55138abf 31%, #3d0b65bf);
+}
+
+.menubutton{
+    display:none;
+    justify-content: flex-end;
+}
+
+.tabs1{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    padding:1.6rem;
+    gap: 1rem;
+    box-sizing: border-box;
+    top: 80px;
+    width: 100%;
+    border-radius: 1.4rem;
+    border: 1px solid #7857bb;
+    background-color: #3f2364;
+}
+
+
+    
+ .link{
+    color: white;
+    text-decoration: none;
+}
+
+.link:focus{
+    font-weight:  bold;
+    color: orange;
+}
+@media screen and (max-width: 840px){
+    .tabs{
+        display: none;
+    }
+
+    .menubutton{
+        display: flex;
+    }
+
+    .link{
+        font-size: 16px;
+    }
+}
+
+.menu{
+    transform: scale(0.4);
+}
