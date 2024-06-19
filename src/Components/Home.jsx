@@ -2,6 +2,7 @@ import React, {  useState } from 'react'
 import  './omdb.css/Home.css';
 import axios from 'axios';
 import SearchIcon from '@mui/icons-material/Search';
+import {  DownloadRounded } from '@mui/icons-material';
 
 
 const Home = () => {
@@ -27,17 +28,53 @@ const Home = () => {
             }
         })
     }
-    const handleDownload =async(url)=>{
-        const response =await axios.get(url,{resposeType:"blob"})
-        const downloadUrl =window.URL.createObjectURL(new Blob([response.data]))
-        const link = document.createElement('a');
-        link.href = downloadUrl;
-        link.setAttribute('download', 'movie_poster.jpg');
-        document.body.appendChild(link);
-        link.click();
-         link.parentNode.removeChild(link);
-      };
 
+    // const handleDownload =async(url)=>{
+    //     const response =await axios.get(url,{resposeType:"blob"})
+    //     const downloadUrl =window.URL.createObjectURL(new Blob([response.data]))
+    //     const link = document.createElement('a');
+    //     link.href = downloadUrl;
+    //     link.setAttribute('download', 'movie_poster.jpg');
+    //     document.body.appendChild(link);
+    //     link.click();
+    //      link.parentNode.removeChild(link);
+    //   };
+
+      const handleDownload = async (url) => {
+        try {
+          const response = await axios.get(url, { responseType: 'blob' });
+      
+          // Ensure compatibility with different browsers and user preferences
+          const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
+          const isBlobSupported = URL.createObjectURL && typeof URL.createObjectURL === 'function';
+      
+          if (isBlobSupported) {
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.setAttribute('download', 'movie_poster.jpg');
+            link.style.display = 'none'; // Hide the link for better UX
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          } else {
+            // Fallback for browsers that don't support createObjectURL
+            const a = document.createElement('a');
+            a.href = url;
+            a.setAttribute('download', 'movie_poster.jpg');
+            a.target = '_blank'; // Open the image in a new tab
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+      
+            console.warn('Browser does not fully support image downloads. Opening in a new tab.');
+          }
+        } catch (error) {
+          console.error('Error downloading image:', error);
+          // Handle download errors gracefully (e.g., display an error message to the user)
+        }
+      };
+      
+ 
   return (
     <React.Fragment>
         <div className='parent'>
@@ -46,7 +83,7 @@ const Home = () => {
                 <p className='heading1'>SEARCH MOVIE POSTER</p>
             </div>
         <div className='omdbsearchparent'>
-            <form action="" onSubmit={Submits}>
+            <form action="" onSubmit={Submits} className='form'>
              <div className='searchinput'> 
             <i><SearchIcon /></i> 
             <input className='inputs' type="text" value={search} onChange={onsubmits} id="" />
@@ -78,7 +115,8 @@ const Home = () => {
                         </div>
                        <button className='downloaddbtn' onClick={() => handleDownload(movie.Poster)}>Download</button>
                         </div>
-                       <button className='downloaddbtn1' onClick={() => handleDownload(movie.Poster)}></button>
+                       <button className='downloaddbtn1' onClick={() => handleDownload(movie.Poster)}><DownloadRounded fontSize='small'/></button>
+
                     </div>
                 ))
             ) }

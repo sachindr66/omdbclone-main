@@ -22,7 +22,6 @@
     width: 100%;
     box-sizing: border-box;
     height:100%;
-    padding: 0 6px;
 }
 
 .headingparent{
@@ -36,8 +35,8 @@
     margin: 20px;
     -webkit-text-fill-color: transparent;
     background-image: linear-gradient(90.4deg, #efc42c -21.68%, #f35748 55.26%, #ee6abc 134.07%);
-    /* -webkit-background-clip: text; */
     background-clip: text;
+    /* -webkit-background-clip: text; */
     /* animation-iteration-count: infinite; */
     /* animation-fill-mode: forwards; */
 }
@@ -48,15 +47,15 @@
     text-align: center;
     font-weight: normal;
 }
-form{
+.form{
     box-sizing: border-box;
     width: 100%;
+    padding: 0px;
 }
 
 .searchinput{
     display: flex;
     align-items: center;
-    width: 100%;
     box-sizing: border-box;
     border-radius: 2.6rem;
     width: 100%;
@@ -100,6 +99,7 @@ input{
     background-image: linear-gradient(90.4deg, #efc42c -21.68%, #f35748 55.26%, #ee6abc 134.07%);
 }
 
+
 .cardslist{
     display: grid;
     grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
@@ -109,17 +109,7 @@ input{
     align-items: center;
     gap: 10px;
 }
-/* @media screen and (max-width: 400px){
-    .cardslist{
-        background: red;
-        justify-content: center;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-}
-} */
-.ppp{
-    background-color: green;
-    color: red;
-}
+
 .omdbcards{
     display: flex;
     justify-content: center;
@@ -179,7 +169,6 @@ input{
     padding: 4px;
     background-image: linear-gradient(90.4deg, #efc42c -21.68%, #f35748 55.26%, #ee6abc 134.07%);
 }
-
 .downloaddbtn1{
     display: flex;
     align-items: center;
@@ -193,6 +182,7 @@ input{
     animation: spin 6s infinite;
     border: none;
     padding: 10px;
+    color: #ffffff;
 }
 
 

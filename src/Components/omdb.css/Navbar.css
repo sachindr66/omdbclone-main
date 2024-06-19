@@ -38,7 +38,7 @@
     padding:1.6rem;
     gap: 1rem;
     box-sizing: border-box;
-    top: 80px;
+    top: 60px;
     width: 100%;
     border-radius: 1.4rem;
     border: 1px solid #7857bb;
@@ -63,6 +63,7 @@
 
     .menubutton{
         display: flex;
+        z-index: 1;
     }
 
     .link{
