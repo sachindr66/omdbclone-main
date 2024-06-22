@@ -14,7 +14,7 @@ export let data = [
     year: 2023,
     quality: "HD",
     type: "movie",
-    image:"https://wallpapers.com/images/high/kgf-reena-and-rocky-couple-fjou9n4rcsrp45p5.webp",
+    image:'https://wallpapers.com/images/high/1080-fortnite-1920-x-1080-jalsaqd4b2st25iw.webp',
     description:"KGF is an Indian Kannada language period action film series set mostly in the Kolar Gold Fields, which gives the series its name, created by Prashanth Neel and produced by Hombale Films starring Yash in lead role with an ensemble supporting cast.",
   },
 
@@ -24,7 +24,7 @@ export let data = [
     quality: "HD",
     type: "movie",
     name: "K.G.F",
-    image:"https://wallpapers.com/images/high/titanic-cruising-at-night-zbknc6f8rl1vw09e.webp",
+    image:"https://wallpapercave.com/wp/wp2563732.jpg",
     description:"KGF is an Indian Kannada language period action film series set mostly in the Kolar Gold Fields, which gives the series its name, created by Prashanth Neel and produced by Hombale Films starring Yash in lead role with an ensemble supporting cast.",
   },
 

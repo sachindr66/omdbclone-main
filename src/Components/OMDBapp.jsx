@@ -23,15 +23,10 @@ const OMDBapp = () => {
               <Route path='/Parameeter' Component={Parameeter}/>
               <Route path='/Apikeys' Component={Apikeys}/>
             </Routes>
-            <div className='carousel'>
-            
-              {/*  */}
-            <Carousel/>
-            </div>
-            <div className='footer'>
+      </div>  
+      <div className='footer'>
             <Footer/>
-            </div>
-      </div>      
+            </div>    
     
     </React.Fragment>
   )

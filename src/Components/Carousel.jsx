@@ -2,9 +2,10 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Kannada from "../assets/Kannada1.jpg"
 import { Rating } from '@mui/material';
 import { data } from './Carouseldata';
+import  './omdb.css/Carousel.css';
+
 
 const Carousel=()=> {
     const settings = {
@@ -19,7 +20,7 @@ const Carousel=()=> {
   
     return (
       <div className='sliders'>
-        <Slider {...settings}>
+        <Slider {...settings} >
         {
           data.map((obj)=>{
             let{name, year, description,type,quality,image}=obj
@@ -55,7 +56,7 @@ const Carousel=()=> {
         
      
 
-</Slider>
+        </Slider>
       </div>
     );
   }

@@ -3,6 +3,7 @@ import  './omdb.css/Home.css';
 import axios from 'axios';
 import SearchIcon from '@mui/icons-material/Search';
 import {  DownloadRounded } from '@mui/icons-material';
+import Carousel from './Carousel';
 
 
 const Home = () => {
@@ -116,12 +117,13 @@ const Home = () => {
                        <button className='downloaddbtn' onClick={() => handleDownload(movie.Poster)}>Download</button>
                         </div>
                        <button className='downloaddbtn1' onClick={() => handleDownload(movie.Poster)}><DownloadRounded fontSize='small'/></button>
-
                     </div>
                 ))
             ) }
             </div>
-
+        </div>
+        <div className='carousel'>
+        <Carousel/>
         </div>
         </div>
       
