@@ -13,7 +13,7 @@
     color: #ffffff;
     font-family:sans-serif ;
     box-sizing: border-box;
-    background-image: radial-gradient(at 19% 40%, #621e45 0, transparent 50%), radial-gradient(at 42% 46%, #621e45 0, transparent 50%), radial-gradient(at 10% 43%, #621e45 0, transparent 50%), radial-gradient(at 98% 18%, #3b0d78 0, transparent 50%), radial-gradient(at 40% 20%, #2b1547 0, transparent 50%), radial-gradient(at 80% 0, #2b1547 0, transparent 50%);
+    /* background-image: radial-gradient(at 19% 40%, #621e45 0, transparent 50%), radial-gradient(at 42% 46%, #621e45 0, transparent 50%), radial-gradient(at 10% 43%, #621e45 0, transparent 50%), radial-gradient(at 98% 18%, #3b0d78 0, transparent 50%), radial-gradient(at 40% 20%, #2b1547 0, transparent 50%), radial-gradient(at 80% 0, #2b1547 0, transparent 50%); */
 }
 
 body{

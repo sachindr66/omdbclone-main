@@ -86,7 +86,7 @@ const Home = () => {
         <div className='omdbsearchparent'>
             <form action="" onSubmit={Submits} className='form'>
              <div className='searchinput'> 
-            <i><SearchIcon /></i> 
+            <i><SearchIcon/></i> 
             <input className='inputs' type="text" value={search} onChange={onsubmits} id="" />
             <button className='omdbbtn' type='submit'>Search</button>
             </div>  
@@ -94,7 +94,6 @@ const Home = () => {
             <div className='cardslist'>
             {Errormsg ?(
                 <p className='errormsg'>{Errormsg}</p>
-
             ):(
             data.map((movie)=>(
                     <div className='omdbcards'>
@@ -115,11 +114,11 @@ const Home = () => {
                         imdbID:{movie.imdbID}
                         </div>
                        <button className='downloaddbtn' onClick={() => handleDownload(movie.Poster)}>Download</button>
-                        </div>
+                         </div>
                        <button className='downloaddbtn1' onClick={() => handleDownload(movie.Poster)}><DownloadRounded fontSize='small'/></button>
                     </div>
                 ))
-            ) }
+              ) }
             </div>
         </div>
         <div className='carousel'>

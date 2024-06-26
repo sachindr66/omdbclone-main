@@ -59,6 +59,15 @@ const Footer = () => {
               <li><a href="./Contact">Contact us</a></li>
             </ul>
             </div>
+            <div>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="./About">About us</a></li>
+              <li><a href="./Services">Services</a></li>
+              <li><a href="./Apikeys">Api-keys</a></li>
+              <li><a href="./Contact">Contact us</a></li>
+            </ul>
+            </div>
             {/* <div className='socialmedia'>
             <ul>
               <li><LinkedIn/></li>
@@ -79,8 +88,6 @@ const Footer = () => {
           </div>
           </div>
           </div>
-
-
         </div>
     </footer>
   )

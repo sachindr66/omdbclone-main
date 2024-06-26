@@ -8,8 +8,6 @@ import Parameeter from './Parameeter'
 import Apikeys from './Api-keys'
 import './omdb.css/omdbapp.css'
 import Footer from './Footer'
-import Carousell from './Carousels'
-import Carousel from './Carousel'
 
 const OMDBapp = () => {
   return (
