@@ -102,6 +102,7 @@ const Home = () => {
                 value={search}
                 onChange={onsubmits}
                 id=""
+                placeholder="Search for movies..."
               />
               <button className="omdbbtn" type="submit">
                 Search
@@ -142,7 +143,7 @@ const Home = () => {
         <div className="carousel">
           <Carousel />
         </div>
-        <div>
+        <div className="projectdetails">
           <About/>
           <Contact/>
           <Parameeter/>

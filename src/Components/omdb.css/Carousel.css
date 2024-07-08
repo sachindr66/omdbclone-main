@@ -13,9 +13,9 @@
     box-sizing: border-box;
     backdrop-filter: blur(16px);
     border-radius: 20px;
-    background-color: #ffffff0f;
-    margin-top: 4rem;
+    margin-top: 2rem;
     padding: 10px;
+    width: 100%;
   }
 
   .caroselchip{
@@ -25,25 +25,28 @@
   }
 
   .chip3{
-    background-color: #ffffff41;
-    padding: 0px 8px;
+    background-color: #a8f9f441;
+    padding: 2px 8px;
     font-size: 12px;
     border-radius: 4px;
-    color: aqua;
+    color: #00ffff;
   }
 
     .carosel-card{
-      max-width: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
       padding: 4px;
       box-sizing: border-box;
     }
 
     .movie-card{
-      /* border: 1px solid #808080; */
+      border: 1px solid #80808052;
       border-radius: 10px;
       overflow: hidden;
       transition: transform 6s;
+      width: 100%;
     }
 
     .movie-card1 {
@@ -56,13 +59,14 @@
       backdrop-filter: blur(16px);
       box-shadow: 0 2px 5px #0000001a;
       height: 100%;
-
     }
+
     
     .movie-image,.movie-poster{
       width: 100%;
       height: 100%;
       min-height: 360px;
+      max-height: 360px;
       border-radius: 10px;
       object-fit:cover;
       transition: transform 0.4s;
@@ -117,7 +121,7 @@
     height: 400px;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px #00000033;
     transition: transform 0.2s;
 }
 
@@ -147,10 +151,14 @@
     font-size: 24px;
     text-align: center;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
+    background: #00000080;
 }
 
 .card:hover .info {
     opacity: 1;
 }
 
+.content {
+  width: 300px;
+  margin: 20px;
+}

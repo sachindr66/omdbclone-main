@@ -68,7 +68,7 @@
   margin: auto;
   background: linear-gradient(#fff, #fff) padding-box,
     linear-gradient(180deg, #efc42c, #f35748 57.29%, #ee6abc) border-box;
-  border: 4px solid transparent;
+  border: 2px solid transparent;
   position: relative;
   border-image-slice: 1;
 }
@@ -89,16 +89,20 @@ input {
 
 .errormsg {
   text-align: center;
+  color: #ff0000;
 }
 
 .omdbbtn {
+  display: flex;
+  justify-content: center;
   padding: 14px;
   border: none;
-  color: white;
+  color: #ffffff;
   font-weight: bold;
-  font-size: 18px;
-  letter-spacing: 1px;
+  letter-spacing:0.6px;
   border-radius: 0px 1.6rem 1.6rem 0;
+  font-size: 12px;
+  width: 60px;
   background-image: linear-gradient(90.4deg,#efc42c -21.68%,#f35748 55.26%,#ee6abc 134.07%
 );
 }
@@ -111,6 +115,7 @@ input {
   width: 100%;
   align-items: center;
   gap: 10px;
+  margin-top: 40px;
 }
 
 .downloaddbtn {
@@ -134,7 +139,7 @@ input {
   box-sizing: border-box;
   background-color: #ffffff0f;
   backdrop-filter: blur(16px);
-  box-shadow: 0 2px 5px #0000001a;
+  box-shadow: 0 2px 6px #0000001a;
   height: 100%;
   padding: 10px;
   overflow: hidden;
@@ -143,10 +148,10 @@ input {
 
 .omdb-poster {
   width: 100%;
-  min-height: 300px;
-  max-width: 200px;
+  min-height: 320px;
+  max-width: 280px;
   max-height: 300px;
-  min-width: 220px;
+  min-width: 214px;
 }
 
 .poster {
@@ -169,7 +174,7 @@ input {
   gap: 10px;
   bottom: 0;
   box-sizing: border-box;
-  background-color: rgba(3, 3, 3, 0.192);
+  background-color: #03030331;
   opacity: 0;
 }
 .poster-info:hover {
@@ -182,7 +187,7 @@ input {
   gap: 10px;
   width: 100%;
   height: fit-content;
-  background-color: rgba(39, 39, 39, 0.55);
+  background-color: #2727278c;
   backdrop-filter: blur(16px);
   border-radius: 12px 12px 0px 0px;
   padding: 10px;
@@ -222,9 +227,8 @@ input {
 }
 .downloadicon{
   animation: spin 8s infinite;
-
-
 }
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -232,6 +236,13 @@ input {
   to {
     transform: rotate(360deg);
   }
+}
+
+.projectdetails{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -259,4 +270,30 @@ input {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
+
+  .cardslist{
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .omdb-card{
+    padding: 4px;
+  }
+
+  .omdb-poster{
+    min-height: 210px;
+    max-height: 240px;
+    min-width: 100px;
+    max-width: 240px;
+    width: 100%;
+  }
+  
+  .poster-info{
+    font-size: 10px;
+  }
+  .info{
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+ 
+
 }

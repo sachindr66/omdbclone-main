@@ -11,16 +11,16 @@ const Carousel = () => {
     dots: true,
     infinite: true,
     speed: 600,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 2000,
+    autoplay: true,
+    autoplaySpeed: 1600,
 
     responsive: [
       {
-        breakpoint: 1300,
+        breakpoint: 1200,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
         },
       },
       {
@@ -66,8 +66,10 @@ const Carousel = () => {
                           <p className="chip3">{type}</p>
                           <p className="chip3">{year}</p>
                         </div>
+                        {/* <Rating/> */}
                         <h3>{name}</h3>
                         <p>{description}</p>
+              
                       </div>
                     </div>
                   </div>

@@ -1,28 +1,27 @@
 import React from 'react'
 import './omdb.css/Footer.css'
-import { Call, Facebook, FacebookRounded, Instagram, InstallDesktop, LinkedIn, LocationCityRounded, Mail, Twitter } from '@mui/icons-material'
-import { TiSocialInstagramCircular } from 'react-icons/ti'
+import { Call, FacebookRounded, Instagram, LocationCityRounded, Mail, Twitter } from '@mui/icons-material'
 
 const Footer = () => {
   return (
     <footer>
         <div className='footer1'> 
         <div className='footerchild'>
-          <span>
+          <span className='footerheader'>
             <i><LocationCityRounded/></i>
             <div>
             <h3>Find us</h3>
             <p>110 Avenue, sw 54321 </p>
             </div>
           </span>
-          <span>
+          <span className='footerheader'>
             <i> <Call/></i>
             <div>
             <h3>Call us</h3>
             <p>123-436-789</p>
             </div>
           </span>
-          <span>
+          <span className='footerheader'>
             <i><Mail/></i>
             <div>
             <h3>Mail us</h3>
@@ -40,9 +39,9 @@ const Footer = () => {
         <div className='followus'>
             <h3>Follow us</h3>
             <div className='icons'>
-              <i><FacebookRounded/></i>
-              <i><InstallDesktop/></i>
-              <i><Twitter/></i>
+              <i><a href=""><FacebookRounded/></a></i>
+              <i><a href=""><Instagram/></a></i>
+              <i><a href=""><Twitter/></a></i>
             </div>
         </div>
         </div>
@@ -52,38 +51,32 @@ const Footer = () => {
           <div className='linkslist'>
             <div>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="./About">About us</a></li>
-              <li><a href="./Services">Services</a></li>
-              <li><a href="./Apikeys">Api-keys</a></li>
-              <li><a href="./Contact">Contact us</a></li>
+              <li><a className='links' href="/">Home</a></li>
+              <li><a className='links' href="./About">About us</a></li>
+              <li><a className='links' href="./Services">Services</a></li>
+              <li><a className='links' href="./Apikeys">Api-keys</a></li>
+              <li><a className='links' href="./Contact">Contact us</a></li>
             </ul>
             </div>
             <div>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="./About">About us</a></li>
-              <li><a href="./Services">Services</a></li>
-              <li><a href="./Apikeys">Api-keys</a></li>
-              <li><a href="./Contact">Contact us</a></li>
+              <li><a className='links' href="/">Facebook</a></li>
+              <li><a className='links' href="./About">  Twitter</a></li>
+              <li><a className='links' href="./Services">Linkdin</a></li>
+              <li><a className='links' href="./Apikeys">Instagram</a></li>
+              <li><a className='links' href="./Contact">You Toob</a></li>
             </ul>
             </div>
-            {/* <div className='socialmedia'>
-            <ul>
-              <li><LinkedIn/></li>
-              <li><Instagram/></li>
-              <li><Facebook/></li>
-              <li><Twitter/></li>
-            </ul>
-          </div> */}
           </div>
           </div>
           <div className='letssyaconnect'>
             <h4>Let's Stay Connected</h4>
+            <div>
             <p>Enter your email to unlock 10% OFF</p>
             <div className='subscribe'>
               <input type="text" name="" id="footerinput" placeholder='Enter Email'/>
               <button className='footerbtn'>Subscribe</button>
+            </div>
             </div>
           </div>
           </div>

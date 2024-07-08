@@ -87,7 +87,13 @@
     font-weight: bold;
     letter-spacing: 1px;
     font-size: 18px;
+    width: 140px;
     border: none;
+}
+
+.apibtn:hover{
+    background-image: linear-gradient(90.4deg, #f35748 -21.68%, #f35748 55.26%, #ee6abc 134.07%);
+    transform: scale(1.09);
 }
 #apiinput:focus{
     box-shadow:  0 0 8px #9f62d8;
@@ -117,6 +123,7 @@
 }
     .apibtn{
         width: 100%;
+        font-size: 16px;
     }
 
     .apikeyform,form{

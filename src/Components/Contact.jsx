@@ -78,7 +78,7 @@ const Contact = () => {
                 className="contactinput"
                 id="name"
                 placeholder="Enter name"
-                style={{border: error.name? "2px solid red":"2px  solid #7857bb"}}
+                style={{border: error.name? "1px solid red":"2px  solid #7857bb"}}
               />
               <p style={{color:"red"}}>{error.name}</p>
             </div>
@@ -92,7 +92,7 @@ const Contact = () => {
                 className="contactinput"
                 id="Email"
                 placeholder="Enter E-mail"
-                style={{border: error.email? "2px solid red":"2px  solid #7857bb"}}
+                style={{border: error.email? "1px solid red":"2px  solid #7857bb"}}
 
               />
               {error.email && <p style={{color:"red"}}>{error.email}</p>}
@@ -108,7 +108,7 @@ const Contact = () => {
                 className="contactinput"
                 id="phonenumber"
                 placeholder="Enter phone number"
-                style={{border: error.phonenumber? "2px solid red":"2px  solid #7857bb"}}
+                style={{border: error.phonenumber? "1px solid red":"2px  solid #7857bb"}}
               />
               {error.phonenumber && <p style={{color:"red"}}>{error.phonenumber}</p>}
             </div>
@@ -122,7 +122,7 @@ const Contact = () => {
                 className="contactinput"
                 id="help"
                 placeholder="What type of enquiry"
-                style={{border: error.help? "2px solid red":"2px  solid #7857bb"}}
+                style={{border: error.help? "1px solid red":"2px  solid #7857bb"}}
               />
               {error.help && <p style={{color:"red"}}>{error.help}</p>}
             </div>
@@ -136,7 +136,7 @@ const Contact = () => {
                 className="contactinput"
                 id="enquiry"
                 placeholder="Help us Know a littel about your query"
-                style={{border: error.enquiry? "2px solid red":"2px  solid #7857bb"}}
+                style={{border: error.enquiry? "1px solid red":"2px  solid #7857bb"}}
               />
               {error.enquiry && <p style={{color:'red'}}>{error.enquiry}</p>}
             </div>

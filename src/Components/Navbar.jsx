@@ -20,9 +20,7 @@ const Navbar = () => {
   };
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
-    // return () => {
-    //   document.removeEventListener('mousedown', handleClickOutside);
-    // };
+  
   }, []);
 
 
@@ -52,7 +50,7 @@ const Navbar = () => {
       <Link className='link' onClick={click} to="/Parameeter">Parameeter</Link>
       </div> 
       )}
-   </div>
+      </div>
  
       </header>       
     </>
