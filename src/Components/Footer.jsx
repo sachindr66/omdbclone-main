@@ -64,7 +64,7 @@ const Footer = () => {
               <li><a className='links' href="./About">  Twitter</a></li>
               <li><a className='links' href="./Services">Linkdin</a></li>
               <li><a className='links' href="./Apikeys">Instagram</a></li>
-              <li><a className='links' href="./Contact">You Toob</a></li>
+              <li><a className='links' href="./Contact">You Tube</a></li>
             </ul>
             </div>
           </div>

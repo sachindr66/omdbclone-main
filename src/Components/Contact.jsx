@@ -7,7 +7,7 @@ const Contact = () => {
     email:'',
     phonenumber:'',
     help:'',
-    enquiry:''
+    enquiry:'',
   });
   const [error, setError] = useState({});
 
@@ -93,7 +93,6 @@ const Contact = () => {
                 id="Email"
                 placeholder="Enter E-mail"
                 style={{border: error.email? "1px solid red":"2px  solid #7857bb"}}
-
               />
               {error.email && <p style={{color:"red"}}>{error.email}</p>}
               
@@ -130,7 +129,7 @@ const Contact = () => {
               <label htmlFor="enquiry">Enquiry</label>
               <input
                 type="e-mail"
-                name="Enquiry"
+                name="enquiry"
                 value={data.enquiry}
                 onChange={submitform}
                 className="contactinput"
@@ -140,6 +139,7 @@ const Contact = () => {
               />
               {error.enquiry && <p style={{color:'red'}}>{error.enquiry}</p>}
             </div>
+        
             <button className="sendbtn" type="submit">Send Enquiry</button>
           </div>
         </form>

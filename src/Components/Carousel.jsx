@@ -16,6 +16,15 @@ const Carousel = () => {
     autoplay: true,
     autoplaySpeed: 1600,
 
+    customPaging: i => (
+      <div className="custom-dot"><img src='sss' alt="" /></div>
+    ),
+    // appendDots: dots => (
+    //   <div>
+    //     <ul style={{ margin: '0px' }}>{dots}</ul>
+    //   </div>
+    // ),
+
     responsive: [
       {
         breakpoint: 1200,
@@ -66,10 +75,9 @@ const Carousel = () => {
                           <p className="chip3">{type}</p>
                           <p className="chip3">{year}</p>
                         </div>
-                        {/* <Rating/> */}
+                        <Rating name="size-small" style={{color:"aqua" }}  defaultValue={5} size="small"/>
                         <h3>{name}</h3>
                         <p>{description}</p>
-              
                       </div>
                     </div>
                   </div>
