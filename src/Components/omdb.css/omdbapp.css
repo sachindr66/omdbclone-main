@@ -36,12 +36,10 @@ body{
     padding: 4rem 2rem;
     border: 1px  solid #7857bb;
     background-color: #3f2364;
-    /* background-color: rgb(255,255,255,0.1); */
-    /* backdrop-filter: 16px; */
-    /* box-shadow: 0px 0px 16px 1px rgba(179, 0, 255, 0.297); */
     box-sizing: border-box;
     gap: 20px;
 }
+
 
 
 

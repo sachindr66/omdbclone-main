@@ -13,6 +13,7 @@
     /* -webkit-background-clip: text; */
     background-clip: text;
     font-weight:900;
+    cursor: pointer;
 }
 
 .tabs{
@@ -27,6 +28,7 @@
 .menubutton{
     display:none;
     justify-content: flex-end;
+    cursor: pointer;
 }
 
 .tabs1{
@@ -44,18 +46,21 @@
     border: 1px solid #7857bb;
     background-color: #3f2364;
 }
-
-
     
- .link{
+.link{
     color: white;
     text-decoration: none;
 }
 
+.link:hover{
+    color: #ffa500;
+}
+
 .link:focus{
     font-weight:  bold;
-    color: orange;
+    color: #ffa500;
 }
+
 @media screen and (max-width: 840px){
     .tabs{
         display: none;

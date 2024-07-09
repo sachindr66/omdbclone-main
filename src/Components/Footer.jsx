@@ -73,10 +73,12 @@ const Footer = () => {
             <h4>Let's Stay Connected</h4>
             <div>
             <p>Enter your email to unlock 10% OFF</p>
+            <form action="" className='subscribeform'>
             <div className='subscribe'>
-              <input type="text" name="" id="footerinput" placeholder='Enter Email'/>
+              <input type="email" name="" id="footerinput" required placeholder='Enter Email' />
               <button className='footerbtn'>Subscribe</button>
             </div>
+              </form>
             </div>
           </div>
           </div>

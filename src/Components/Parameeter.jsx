@@ -3,6 +3,7 @@ import "./omdb.css/Parameter.css"
 
 const Parameeter = () => {
   return (
+    <div className='parameeter'>
     <div className='allchildparent'>
       <h1>Parameters</h1>
       <div className='tabels'>
@@ -141,6 +142,7 @@ const Parameeter = () => {
         </tbody>
       </table>
       </div>
+    </div>
     </div>
   )
 }

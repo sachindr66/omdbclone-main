@@ -11,8 +11,8 @@ footer{
     background-color: #3f2364;
     border-top: 1px  solid #7857bb;
     width: 100%;
-    margin: auto;
     letter-spacing: 0.6px;
+    margin-top: 2rem;
 }
 
 .footer1{
@@ -115,6 +115,10 @@ ul{
     width: 100%;
 }
 
+.subscribeform{
+    padding: 0;
+}
+
 .subscribe{
     display: flex;
     overflow: auto;
@@ -131,9 +135,12 @@ ul{
 .footerbtn{
     background-image: linear-gradient(90.4deg, #efc42c -21.68%, #f35748 55.26%, #ee6abc 134.07%);
     border:none;
-    color: white;
-    background-color: white;
+    color: #ffffff;
     padding: 10px;
+}
+
+.footerbtn:hover{
+    background-image: linear-gradient(90.4deg, #FF4600 -21.68%, #FF4500 55.26%);
 }
 
 #footerinput{

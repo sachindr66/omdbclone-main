@@ -11,16 +11,14 @@ const Navbar = () => {
     setstate(!state)
   }
 
-  
-
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setstate(false);
     }
   };
+
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
-  
   }, []);
 
 
@@ -28,8 +26,10 @@ const Navbar = () => {
     <>
       <header className='omdbheader'>
       <div>
-        <h1 className='logo'>OMDBCLONE</h1>
-        
+      <Link className='link' to="/">
+      <h1 className='logo'>OMDBCLONE</h1>
+      </Link>
+
       </div>
       <div className='tabs'>
       <Link className='link' to="/">Home</Link>

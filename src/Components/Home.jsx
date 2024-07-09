@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import "./omdb.css/Home.css";
 import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
-import { ArrowDownward, DownloadRounded } from "@mui/icons-material";
+import { ArrowDownward} from "@mui/icons-material";
 import Carousel from "./Carousel";
 import About from "./About";
 import Contact from "./Contact";
-import Parameeter from "./Parameeter";
 
 const Home = () => {
   let [data, Setdata] = useState([]);
@@ -18,7 +17,10 @@ const Home = () => {
   };
   const Submits = async (e) => {
     e.preventDefault();
-    fetch(`https://www.omdbapi.com/?s=${search}&apikey=31edf87f`)
+     const trimmedSearch =search.replace(/\s+/g, ' ').trim()
+     const encodeSearch =encodeURIComponent(trimmedSearch)
+   
+    fetch(`https://www.omdbapi.com/?s=${encodeSearch}&apikey=31edf87f`)
       .then((response) => response.json())
       .then((value) => {
         console.log(value);
@@ -32,7 +34,7 @@ const Home = () => {
             "No movies found. Please check the spelling and try again."
           );
         }
-      });
+      })
   };
 
   // const handleDownload =async(url)=>{
@@ -72,7 +74,6 @@ const Home = () => {
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-
         console.warn(
           "Browser does not fully support image downloads. Opening in a new tab."
         );
@@ -146,7 +147,6 @@ const Home = () => {
         <div className="projectdetails">
           <About/>
           <Contact/>
-          <Parameeter/>
         </div>
       </div>
     </React.Fragment>

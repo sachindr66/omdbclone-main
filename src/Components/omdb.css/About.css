@@ -64,6 +64,7 @@
     color: #ffffff;
     font-size: 1.2rem;
     border: none;
+    border-radius: 6px;
 }
 
 .sponsors{
@@ -87,6 +88,11 @@ a{
     font-size: 1.4rem;
 }
 
+
+.patronbutton{
+    font-size: 14px;
+   } 
+
 }
 
 
@@ -102,6 +108,13 @@ a{
         gap: 10px;
     }
 
+   .patronbutton{
+    font-size: 12px;
+        border-radius: 4px;
+        padding: 8px;
+   } 
+}
+
     .cards{
         border-radius: 0.6rem;
         gap: 10px;
@@ -109,5 +122,3 @@ a{
     }
 
    
- 
-    }
