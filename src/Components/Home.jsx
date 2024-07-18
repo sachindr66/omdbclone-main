@@ -15,6 +15,7 @@ const Home = () => {
   const onsubmits = (e) => {
     Setsearch(e.target.value);
   };
+  
   const Submits = async (e) => {
     e.preventDefault();
      const trimmedSearch =search.replace(/\s+/g, ' ').trim()
@@ -37,16 +38,7 @@ const Home = () => {
       })
   };
 
-  // const handleDownload =async(url)=>{
-  //     const response =await axios.get(url,{resposeType:"blob"})
-  //     const downloadUrl =window.URL.createObjectURL(new Blob([response.data]))
-  //     const link = document.createElement('a');
-  //     link.href = downloadUrl;
-  //     link.setAttribute('download', 'movie_poster.jpg');
-  //     document.body.appendChild(link);
-  //     link.click();
-  //      link.parentNode.removeChild(link);
-  //   };
+
 
   const handleDownload = async (url) => {
     try {
