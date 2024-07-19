@@ -72,6 +72,10 @@
   border-image-slice: 1;
 }
 
+.main_input::placeholder{
+  color: #000000;
+}
+
 .searchinput i {
   display: flex;
   align-items: center;
@@ -245,11 +249,33 @@ button{
   }
 }
 
+/* PROJECT DETAILS */
 .projectdetails{
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 100%;
+}
+
+
+/* TOPRATED MOVIES */
+
+.topratedmovies{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.toprated_cardslist{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  justify-content: center;
+  place-items: center;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
 }
 
 @media screen and (max-width: 768px) {
@@ -281,6 +307,10 @@ button{
   margin: 1rem 0px;
 }
 
+.toprated_cardslist{
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
   .omdb-card{
     padding: 4px;
   }
@@ -303,3 +333,7 @@ button{
  
 
 }
+
+
+
+

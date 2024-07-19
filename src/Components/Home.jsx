@@ -6,11 +6,14 @@ import { ArrowDownward} from "@mui/icons-material";
 import Carousel from "./Carousel";
 import About from "./About";
 import Contact from "./Contact";
+import TopratedMovies from "./TopratedMovies";
+import PosterDetails from "./PosterDetails";
 
 const Home = () => {
   let [data, Setdata] = useState([]);
   let [search, Setsearch] = useState("");
   let [Errormsg, Seterrormsg] = useState("");
+  const [selectedMovie, setSelectedMovie] = useState(null); // State to hold selected movie details
 
   const onsubmits = (e) => {
     Setsearch(e.target.value);
@@ -38,7 +41,19 @@ const Home = () => {
       })
   };
 
+  const handleMovieClick = async (imdbID) => {
+    try {
+      const response = await axios.get(`https://www.omdbapi.com/?apikey=31edf87f&i=${imdbID}&plot=full`);
+      const data = response.data;
+      setSelectedMovie(data); // Set selected movie details
+    } catch (error) {
+      console.error('Failed to fetch movie details:', error);
+    }
+  };
 
+  const handleCloseDetails = () => {
+    setSelectedMovie(null); // Close movie details view
+  };
 
   const handleDownload = async (url) => {
     try {
@@ -90,7 +105,7 @@ const Home = () => {
                 <SearchIcon />
               </i>
               <input
-                className="inputs"
+                className="main_input"
                 type="text"
                 value={search}
                 onChange={onsubmits}
@@ -105,9 +120,11 @@ const Home = () => {
           <div className="cardslist">
             {Errormsg ? (
               <p className="errormsg">{Errormsg}</p>
-            ) : (
+            ) :selectedMovie ? (
+              <PosterDetails selectedMovie={selectedMovie} handleCloseDetails={handleCloseDetails} />
+            ): (
               data.map((movie) => {
-                let { Title, Poster, Type, Year, imdbID } = movie;
+                let { Title, Poster, Type, Year, imdbID} = movie;
                 return (
                   <div className="card-parent">
                     <div className="omdb-card">
@@ -121,7 +138,7 @@ const Home = () => {
                             <p className="info">Year: {Year}</p>
                             <p className="info">imdbId: {imdbID}</p>
                           </div>
-                          <h3>{Title}</h3>
+                        <h3 className='title' onClick={() => handleMovieClick(imdbID)} style={{ cursor: 'pointer' }}>{Title}</h3>
                         </div>
                       </div>
                     </div>
@@ -136,11 +153,17 @@ const Home = () => {
         <div className="carousel">
           <Carousel />
         </div>
+        <div className="topratedmovies">
+          <TopratedMovies/>
+        </div>
         <div className="projectdetails">
           <About/>
           <Contact/>
         </div>
       </div>
+      {selectedMovie && (
+        <PosterDetails selectedMovie={selectedMovie} handleCloseDetails={handleCloseDetails} />
+      )}
     </React.Fragment>
   );
 };

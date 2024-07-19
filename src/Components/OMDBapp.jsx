@@ -8,6 +8,8 @@ import Parameeter from "./Parameeter";
 import Apikeys from "./Api-keys";
 import "./omdb.css/omdbapp.css";
 import Footer from "./Footer";
+import Movies from "./Movies";
+import Series from "./Series";
 
 const OMDBapp = () => {
   return (
@@ -20,6 +22,8 @@ const OMDBapp = () => {
           <Route path="/About" Component={About} />
           <Route path="/Parameeter" Component={Parameeter} />
           <Route path="/Apikeys" Component={Apikeys} />
+          <Route path="/Movies" Component={Movies}/>
+          <Route path="/Series" Component={Series}/>
         </Routes>
       </div>
       <div className="footer">

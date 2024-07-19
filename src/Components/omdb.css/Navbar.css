@@ -61,7 +61,8 @@
     color: #ffa500;
 }
 
-@media screen and (max-width: 840px){
+
+@media screen and (max-width: 960px){
     .tabs{
         display: none;
     }

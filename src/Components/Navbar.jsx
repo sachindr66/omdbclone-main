@@ -34,6 +34,8 @@ const Navbar = () => {
       <div className='tabs'>
       <Link className='link' to="/">Home</Link>
       <Link className='link'  to="/About">About</Link>
+      <Link className='link'  to="/Series">Series</Link>
+      <Link className='link'  to="/Movies">Movies</Link>
       <Link className='link'  to="/Apikeys">Apikeys</Link>
       <Link className='link'  to="/Contact">Contact</Link>
       <Link className='link'  to="/Parameeter">Parameeter</Link>
@@ -45,6 +47,8 @@ const Navbar = () => {
       <div className='tabs1'>
       <Link className='link' onClick={click} to="/">Home</Link>
       <Link className='link' onClick={click}  to="/About">About</Link>
+      <Link className='link' onClick={click} to="/Series">Series</Link>
+      <Link className='link' onClick={click} to="/Movies">Movies</Link>
       <Link className='link' onClick={click} to="/Apikeys">Apikeys</Link>
       <Link className='link' onClick={click} to="/Contact">Contact</Link>
       <Link className='link' onClick={click} to="/Parameeter">Parameeter</Link>
