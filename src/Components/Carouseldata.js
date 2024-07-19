@@ -32,7 +32,7 @@ export let data = [
     year: 2015,
     quality: "HD",
     type: "movie",
-    image:"https://www.cinejosh.com/newsimg/newsmainimg/1432317237_prabhas-baahubali.jpg",
+    image:"https://wallpapercave.com/wp/wp1851897.jpg",
     description:"The Beginning is a 2015 Indian Telugu-language epic action film co-written and directed by S. S. Rajamouli, and produced by Shobu Yarlagadda and Prasad Devineni under Arka Media Works. The film was produced in Tollywood and was filmed in both Telugu and Tamil languages simultaneously"
   },
 

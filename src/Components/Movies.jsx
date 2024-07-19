@@ -1,4 +1,3 @@
-// Series.js
 import React, { useEffect, useState } from 'react';
 import './omdb.css/Movies.css';
 import { Search } from '@mui/icons-material';
@@ -6,9 +5,9 @@ import PosterDetails from './PosterDetails';
 
 const OMDB_API_KEY = '31edf87f'; // Replace with your actual OMDB API key
 const MIN_POSTERS_COUNT = 120; // Minimum number of posters to display
-const MOVIE_TYPE = 'movie';// Filter by movie type
+const MOVIE_TYPE = 'movie'; // Filter by movie type
 
-const Series = () => {
+const Movies = () => {
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null); // State to store selected movie details
     const [error, setError] = useState(null);
@@ -21,7 +20,7 @@ const Series = () => {
     const fetchMoviesByType = async () => {
         try {
             const encodeSearch = encodeURIComponent(MOVIE_TYPE); // Encode search term
-            const response = await fetch(`https://www.omdbapi.com/?s=${encodeSearch}&type=series&apikey=${OMDB_API_KEY}`);
+            const response = await fetch(`https://www.omdbapi.com/?s=${encodeSearch}&type=movie&apikey=${OMDB_API_KEY}`);
             const data = await response.json();
 
             if (data.Search && data.Search.length > 0) {
@@ -33,10 +32,10 @@ const Series = () => {
                     await fetchMoreMovies(data.Search.length);
                 }
             } else {
-                setError('No series found.');
+                setError('No movies found.');
             }
         } catch (err) {
-            setError('Failed to fetch series data.');
+            setError('Failed to fetch movies data.');
             console.error(err);
         }
     };
@@ -46,7 +45,7 @@ const Series = () => {
             let currentMovies = [...movies];
             let page = 2;
             while (currentMovies.length < MIN_POSTERS_COUNT) {
-                const response = await fetch(`https://www.omdbapi.com/?s=${encodeURIComponent(SERIES_TYPE)}&type=series&apikey=${OMDB_API_KEY}&page=${page}`);
+                const response = await fetch(`https://www.omdbapi.com/?s=${encodeURIComponent(MOVIE_TYPE)}&type=movie&apikey=${OMDB_API_KEY}&page=${page}`);
                 const data = await response.json();
                 if (data.Search && data.Search.length > 0) {
                     currentMovies = [...currentMovies, ...data.Search];
@@ -66,7 +65,7 @@ const Series = () => {
 
             setSelectedMovie(data); // Store selected movie details in state
         } catch (err) {
-            console.error('Failed to fetch series details.', err);
+            console.error('Failed to fetch movie details.', err);
         }
     };
 
@@ -81,9 +80,10 @@ const Series = () => {
     const handleSubmitSearch = async (e) => {
         e.preventDefault();
         if (searchTerm.trim() === '') {
-            setError('Please enter a series title to search.');
+            setError('Please enter a movie title to search.');
             return;
         }
+        setSelectedMovie(null)
         try {
             const encodeSearch = encodeURIComponent(searchTerm.trim()); // Encode search term
             const response = await fetch(`https://www.omdbapi.com/?s=${encodeSearch}&apikey=${OMDB_API_KEY}`);
@@ -94,7 +94,7 @@ const Series = () => {
                 setError('');
             } else {
                 setMovies([]);
-                setError('No series found. Please check the spelling and try again.');
+                setError('No movies found. Please check the spelling and try again.');
             }
         } catch (err) {
             setError('Please check your internet connection.');
@@ -108,7 +108,7 @@ const Series = () => {
                 <div className="movie_input">
                     <input
                         type="text"
-                        placeholder="Search for series..."
+                        placeholder="Search for movies..."
                         value={searchTerm}
                         onChange={handleSearchChange}
                         className='inputs'
@@ -123,7 +123,7 @@ const Series = () => {
                 <PosterDetails selectedMovie={selectedMovie} handleCloseDetails={handleCloseDetails} />
             ) : (
                 <div className='cards_parent'>
-                    <div className='contactcontent3'>Series</div>
+                    <div className='contactcontent3'>Movies</div>
                     <div className='cardslist'>
                         {movies.length > 0 ? (
                             movies.map(movie => (
@@ -157,7 +157,7 @@ const Series = () => {
                                 </div>
                             ))
                         ) : (
-                            <p>No series found.</p>
+                            <p>No movies found.</p>
                         )}
                     </div>
                 </div>
@@ -166,4 +166,4 @@ const Series = () => {
     );
 };
 
-export default Series;
+export default Movies;

@@ -53,16 +53,16 @@ const Footer = () => {
             <ul>
               <li><a className='links' href="/">Home</a></li>
               <li><a className='links' href="./About">About us</a></li>
-              <li><a className='links' href="./Services">Services</a></li>
+              <li><a className='links' href="./Parameeter">Parameeter</a></li>
               <li><a className='links' href="./Apikeys">Api-keys</a></li>
               <li><a className='links' href="./Contact">Contact us</a></li>
             </ul>
             </div>
             <div>
             <ul>
-              <li><a className='links' href="/">Facebook</a></li>
-              <li><a className='links' href="./About">  Twitter</a></li>
-              <li><a className='links' href="./Services">Linkdin</a></li>
+              <li><a className='links' href="./Movies">Movies</a></li>
+              <li><a className='links' href="./Series">Series</a></li>
+              <li><a className='links' href="/">Linkdin</a></li>
               <li><a className='links' href="./Apikeys">Instagram</a></li>
               <li><a className='links' href="./Contact">You Tube</a></li>
             </ul>

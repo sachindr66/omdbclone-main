@@ -1,4 +1,3 @@
-// Series.js
 import React, { useEffect, useState } from 'react';
 import './omdb.css/Movies.css';
 import { Search } from '@mui/icons-material';
@@ -6,13 +5,14 @@ import PosterDetails from './PosterDetails';
 
 const OMDB_API_KEY = '31edf87f'; // Replace with your actual OMDB API key
 const MIN_POSTERS_COUNT = 120; // Minimum number of posters to display
-const SERIES_TYPE = 'series';// Filter by movie type
+const SERIES_TYPE = 'series'; // Filter by movie type
 
 const Series = () => {
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null); // State to store selected movie details
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const [loading, setLoading] = useState(false); // State to manage loading
 
     useEffect(() => {
         fetchMoviesByType();
@@ -60,6 +60,7 @@ const Series = () => {
     };
 
     const handleMovieClick = async (imdbID) => {
+        setLoading(true); // Start loading
         try {
             const response = await fetch(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${imdbID}&plot=full`);
             const data = await response.json();
@@ -67,6 +68,8 @@ const Series = () => {
             setSelectedMovie(data); // Store selected movie details in state
         } catch (err) {
             console.error('Failed to fetch series details.', err);
+        } finally {
+            setLoading(false); // Stop loading
         }
     };
 
@@ -84,6 +87,8 @@ const Series = () => {
             setError('Please enter a series title to search.');
             return;
         }
+        setSelectedMovie(null);
+        setLoading(true); // Start loading
         try {
             const encodeSearch = encodeURIComponent(searchTerm.trim()); // Encode search term
             const response = await fetch(`https://www.omdbapi.com/?s=${encodeSearch}&apikey=${OMDB_API_KEY}`);
@@ -99,6 +104,8 @@ const Series = () => {
         } catch (err) {
             setError('Please check your internet connection.');
             console.error('Error searching for movies:', err);
+        } finally {
+            setLoading(false); // Stop loading
         }
     };
 
@@ -119,7 +126,9 @@ const Series = () => {
                 </div>
             </form>
             {error && <p>{error}</p>}
-            {selectedMovie ? (
+            {loading ? (
+                <p>Loading...</p>
+            ) : selectedMovie ? (
                 <PosterDetails selectedMovie={selectedMovie} handleCloseDetails={handleCloseDetails} />
             ) : (
                 <div className='cards_parent'>

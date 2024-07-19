@@ -21,7 +21,7 @@ const PosterDetails = ({ selectedMovie, handleCloseDetails }) => {
                 <p>Genre: {selectedMovie.Genre}</p>
                 <p>Rated: {selectedMovie.Rated}</p>
                 <p>Runtime: {selectedMovie.Runtime}</p>
-                <button className='movieclose_btn' onClick={handleCloseDetails}>Close</button>
+            <button className='movieclose_btn' onClick={handleCloseDetails}>Close</button>
             </div>
         </div>
     );

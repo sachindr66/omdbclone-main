@@ -39,6 +39,7 @@ const Home = () => {
           );
         }
       })
+      setSelectedMovie(null)
   };
 
   const handleMovieClick = async (imdbID) => {
@@ -110,7 +111,7 @@ const Home = () => {
                 value={search}
                 onChange={onsubmits}
                 id=""
-                placeholder="Search for movies..."
+                placeholder="Search by title (movies, series, etc.)"
               />
               <button className="omdbbtn" type="submit">
                 Search
