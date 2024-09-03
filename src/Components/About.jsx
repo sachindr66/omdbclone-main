@@ -1,14 +1,18 @@
 import React from 'react'
 import './omdb.css/About.css'
+import HiddenComponent from './HiddenComponent'
 
 const About = () => {
   return (
     <React.Fragment>
+        <HiddenComponent>
         <div className='contactcontent'>
                 <div className='contactcontent1'>What OMDBCLONE</div>
                 <div className='contactcontent2'>is all about</div>
                 <div className='contactcontent3'>What makes us OMDBCLONE</div>
                 </div>
+    </HiddenComponent>
+    <HiddenComponent>
     <div className='allchildparent'>
         <div className='omdbapi'>
         <div className='omdbapi1'>
@@ -71,6 +75,7 @@ const About = () => {
             </div>
         </div>
     </div>
+    </HiddenComponent>
     </React.Fragment>
   )
 }

@@ -47,14 +47,17 @@ const TopratedMovies = () => {
   };
 
   const handleMovieClick = async (imdbID) => {
+  setLoading(true)
     try {
       const response = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${imdbID}&plot=full`);
       const data = response.data;
       setSelectedMovie(data); // Set selected movie details
     } catch (error) {
       console.error('Failed to fetch movie details:', error);
+    }finally{
+     setLoading(false)
     }
-  };
+  }
 
   const handleCloseDetails = () => {
     setSelectedMovie(null); // Close movie details view
@@ -63,7 +66,6 @@ const TopratedMovies = () => {
   const handleDownload = async (url) => {
     try {
       const response = await axios.get(url, { responseType: "blob" });
-
       const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
       const isBlobSupported = URL.createObjectURL && typeof URL.createObjectURL === "function";
 
@@ -96,7 +98,7 @@ const TopratedMovies = () => {
         <p className="heading1">TOP RATED MOVIES</p>
       <div className="toprated_cardslist">
         {loading ? (
-          <p className="loading">Loading...</p> 
+          <p className="loader"></p> 
         ) : errormsg ? (
           <p className="errormsg">{errormsg}</p> 
         ) : selectedMovie ?(

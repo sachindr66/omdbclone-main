@@ -1,11 +1,13 @@
 import React from 'react'
 import "./omdb.css/Parameter.css"
+import HiddenComponent from './HiddenComponent'
 
 const Parameeter = () => {
   return (
     <div className='parameeter'>
     <div className='allchildparent'>
       <h1>Parameters</h1>
+      <HiddenComponent>
       <div className='tabels'>
       <table border={1} >
         <thead>
@@ -77,6 +79,8 @@ const Parameeter = () => {
         </tbody>
       </table>
       </div>
+      </HiddenComponent>
+      <HiddenComponent>
       <div className='tabels'>
       <table border={1} >
         <thead>
@@ -142,6 +146,7 @@ const Parameeter = () => {
         </tbody>
       </table>
       </div>
+      </HiddenComponent>
     </div>
     </div>
   )

@@ -10,6 +10,7 @@ import "./omdb.css/omdbapp.css";
 import Footer from "./Footer";
 import Movies from "./Movies";
 import Series from "./Series";
+import HiddenComponent from "./HiddenComponent";
 
 const OMDBapp = () => {
   return (
@@ -26,9 +27,11 @@ const OMDBapp = () => {
           <Route path="/Series" Component={Series}/>
         </Routes>
       </div>
+      <HiddenComponent>
       <div className="footer">
         <Footer />
       </div>
+      </HiddenComponent>
     </React.Fragment>
   );
 };

@@ -1,14 +1,18 @@
 import React from 'react'
 import './omdb.css/Apikeys.css'
+import HiddenComponent from './HiddenComponent'
 
 const Apikeys = () => {
   return (
     <React.Fragment>
+    <HiddenComponent>
             <div className='contactcontent'>
                 <div className='contactcontent1'>Our API-KEYS</div>
                 <div className='contactcontent2'>Generate API Key</div>
                 <div className='contactcontent3'>FREE KEYS! The "open" API is finally open again!</div>
                 </div>
+    </HiddenComponent>
+    <HiddenComponent>
     <div className='allchildparent'>
         <div className='apiparent'>
             <h2 className='devider'>API KEY</h2>
@@ -42,6 +46,7 @@ const Apikeys = () => {
 
 
     </div>
+    </HiddenComponent>
     </React.Fragment>
   )
 }

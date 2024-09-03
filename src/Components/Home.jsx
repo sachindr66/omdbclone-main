@@ -1,94 +1,95 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./omdb.css/Home.css";
 import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
-import { ArrowDownward} from "@mui/icons-material";
+import { ArrowDownward } from "@mui/icons-material";
 import Carousel from "./Carousel";
 import About from "./About";
 import Contact from "./Contact";
 import TopratedMovies from "./TopratedMovies";
 import PosterDetails from "./PosterDetails";
+import HiddenComponent from "./HiddenComponent";
 
 const Home = () => {
-  let [data, Setdata] = useState([]);
-  let [search, Setsearch] = useState("");
-  let [Errormsg, Seterrormsg] = useState("");
-  const [selectedMovie, setSelectedMovie] = useState(null); // State to hold selected movie details
+  const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [hasSearched, setHasSearched] = useState(false); // Track if a search has been performed
 
-  const onsubmits = (e) => {
-    Setsearch(e.target.value);
+  const onInputChange = (e) => {
+    setSearch(e.target.value);
+    setErrorMsg("")
   };
-  
-  const Submits = async (e) => {
-    e.preventDefault();
-     const trimmedSearch =search.replace(/\s+/g, ' ').trim()
-     const encodeSearch =encodeURIComponent(trimmedSearch)
-   
-    fetch(`https://www.omdbapi.com/?s=${encodeSearch}&apikey=31edf87f`)
-      .then((response) => response.json())
-      .then((value) => {
-        console.log(value);
-        if (value.Response === "True") {
-          Setdata(value.Search);
-          Seterrormsg("");
-          Setsearch("");
-        } else {
-          Setdata([]);
-          Seterrormsg(
-            "No movies found. Please check the spelling and try again."
-          );
-        }
-      })
-      setSelectedMovie(null)
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    setHasSearched(true); 
+
+    if (search.trim() === "") {
+      setErrorMsg('Please enter a title (movie, series, etc.) to search.')
+      setLoading(false);
+      return;
+    }
+
+    const trimmedSearch = search.trim();
+    const encodeSearch = encodeURIComponent(trimmedSearch);
+
+    try {
+      const response = await axios.get(
+        `https://www.omdbapi.com/?s=${encodeSearch}&apikey=31edf87f`
+      );
+      const allData = response.data;
+
+      if (allData.Response === "False") {
+        setData([]);
+        setErrorMsg("Please check the spelling and try again.");
+      } else {
+        setData(allData.Search);
+        setErrorMsg("");
+      }
+    } catch (err) {
+      setErrorMsg("Please check your internet connection.");
+      console.error("Error searching for movies:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleMovieClick = async (imdbID) => {
+    setLoading(true)
     try {
-      const response = await axios.get(`https://www.omdbapi.com/?apikey=31edf87f&i=${imdbID}&plot=full`);
+      const response = await axios.get(
+        `https://www.omdbapi.com/?apikey=31edf87f&i=${imdbID}&plot=full`
+      );
       const data = response.data;
-      setSelectedMovie(data); // Set selected movie details
+      setSelectedMovie(data);
     } catch (error) {
-      console.error('Failed to fetch movie details:', error);
+      console.error("Failed to fetch movie details:", error);
+    }finally{
+    setLoading(false)
     }
   };
 
   const handleCloseDetails = () => {
-    setSelectedMovie(null); // Close movie details view
+    setSelectedMovie(null);
   };
 
   const handleDownload = async (url) => {
     try {
       const response = await axios.get(url, { responseType: "blob" });
-
-      // Ensure compatibility with different browsers and user preferences
       const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
-      const isBlobSupported =
-        URL.createObjectURL && typeof URL.createObjectURL === "function";
-
-      if (isBlobSupported) {
-        const link = document.createElement("a");
-        link.href = downloadUrl;
-        link.setAttribute("download", "movie_poster.jpg");
-        link.style.display = "none"; // Hide the link for better UX
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } else {
-        // Fallback for browsers that don't support createObjectURL
-        const a = document.createElement("a");
-        a.href = url;
-        a.setAttribute("download", "movie_poster.jpg");
-        a.target = "_blank"; // Open the image in a new tab
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        console.warn(
-          "Browser does not fully support image downloads. Opening in a new tab."
-        );
-      }
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.setAttribute("download", "movie_poster.jpg");
+      link.style.display = "none";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } catch (error) {
       console.error("Error downloading image:", error);
-      // Handle download errors gracefully (e.g., display an error message to the user)
     }
   };
 
@@ -100,17 +101,16 @@ const Home = () => {
           <p className="heading1">SEARCH MOVIE POSTER</p>
         </div>
         <div className="omdbsearchparent">
-          <form action="" onSubmit={Submits} className="form">
-            <div className="searchinput">
-              <i>
+          <form onSubmit={onSubmit} className="form">
+            <div className="searchinput" >
+              <i className="search_icon" >
                 <SearchIcon />
               </i>
               <input
                 className="main_input"
                 type="text"
                 value={search}
-                onChange={onsubmits}
-                id=""
+                onChange={onInputChange}
                 placeholder="Search by title (movies, series, etc.)"
               />
               <button className="omdbbtn" type="submit">
@@ -118,19 +118,25 @@ const Home = () => {
               </button>
             </div>
           </form>
+          {errorMsg && <p className="error">{errorMsg}</p>}
           <div className="cardslist">
-            {Errormsg ? (
-              <p className="errormsg">{Errormsg}</p>
-            ) :selectedMovie ? (
-              <PosterDetails selectedMovie={selectedMovie} handleCloseDetails={handleCloseDetails} />
-            ): (
+            {loading ? (
+              <p className="loader"></p>
+            ) : selectedMovie ? (
+              <PosterDetails
+                selectedMovie={selectedMovie}
+                handleCloseDetails={handleCloseDetails}
+              />
+            ) : hasSearched && data.length === 0 ? (
+              <p>No results found</p>
+            ) : (
               data.map((movie) => {
-                let { Title, Poster, Type, Year, imdbID} = movie;
+                const { Title, Poster, Type, Year, imdbID } = movie;
                 return (
-                  <div className="card-parent">
+                  <div className="card-parent" key={imdbID}>
                     <div className="omdb-card">
                       <div className="omdb-poster">
-                        <img src={Poster} alt="" className="poster" />
+                        <img src={Poster} alt={Title} className="poster" />
                       </div>
                       <div className="poster-info">
                         <div className="poster-info1">
@@ -139,12 +145,32 @@ const Home = () => {
                             <p className="info">Year: {Year}</p>
                             <p className="info">imdbId: {imdbID}</p>
                           </div>
-                        <h3 className='title' onClick={() => handleMovieClick(imdbID)} style={{ cursor: 'pointer' }}>{Title}</h3>
+                          <h3
+                            className="title"
+                            onClick={() => handleMovieClick(imdbID)}
+                            style={{ cursor: "pointer" }}
+                          >
+                            {Title}
+                          </h3>
                         </div>
                       </div>
                     </div>
-                    <button className="downloaddbtn" onClick={() => handleDownload(movie.Poster)}> Download </button>
-                    <button className="downloaddbtn1" onClick={() => handleDownload(movie.Poster)}> <ArrowDownward  className="downloadicon" fontSize="small"   style={{ height: "16px" }} /></button>
+                    <button
+                      className="downloaddbtn"
+                      onClick={() => handleDownload(movie.Poster)}
+                    >
+                      Download
+                    </button>
+                    <button
+                      className="downloaddbtn1"
+                      onClick={() => handleDownload(movie.Poster)}
+                    >
+                      <ArrowDownward
+                        className="downloadicon"
+                        fontSize="small"
+                        style={{ height: "16px" }}
+                      />
+                    </button>
                   </div>
                 );
               })
@@ -152,23 +178,32 @@ const Home = () => {
           </div>
         </div>
         <div className="carousel">
+        <HiddenComponent>
           <Carousel />
+        </HiddenComponent>
         </div>
+        <HiddenComponent>
         <div className="topratedmovies">
-          <TopratedMovies/>
+          <TopratedMovies />
         </div>
+        </HiddenComponent>
         <div className="projectdetails">
-          <About/>
-          <Contact/>
+        <HiddenComponent>
+          <About />
+        </HiddenComponent>
+        <HiddenComponent>
+          <Contact />
+        </HiddenComponent>
         </div>
       </div>
       {selectedMovie && (
-        <PosterDetails selectedMovie={selectedMovie} handleCloseDetails={handleCloseDetails} />
+        <PosterDetails
+          selectedMovie={selectedMovie}
+          handleCloseDetails={handleCloseDetails}
+        />
       )}
     </React.Fragment>
   );
 };
 
 export default Home;
-
-

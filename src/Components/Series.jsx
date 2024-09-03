@@ -2,33 +2,33 @@ import React, { useEffect, useState } from 'react';
 import './omdb.css/Movies.css';
 import { Search } from '@mui/icons-material';
 import PosterDetails from './PosterDetails';
+import HiddenComponent from './HiddenComponent';
 
-const OMDB_API_KEY = '31edf87f'; // Replace with your actual OMDB API key
-const MIN_POSTERS_COUNT = 120; // Minimum number of posters to display
-const SERIES_TYPE = 'series'; // Filter by movie type
+const OMDB_API_KEY = '31edf87f'; 
+const MIN_POSTERS_COUNT = 120; 
+const SERIES_TYPE = 'series'; 
 
 const Series = () => {
     const [movies, setMovies] = useState([]);
-    const [selectedMovie, setSelectedMovie] = useState(null); // State to store selected movie details
+    const [selectedMovie, setSelectedMovie] = useState(null); 
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
-    const [loading, setLoading] = useState(false); // State to manage loading
+    const [loading, setLoading] = useState(false); 
 
     useEffect(() => {
-        fetchMoviesByType();
+       fetchMoviesByType();
     }, []);
 
     const fetchMoviesByType = async () => {
+        setLoading(true)
         try {
-            const encodeSearch = encodeURIComponent(SERIES_TYPE); // Encode search term
+            const encodeSearch = encodeURIComponent(SERIES_TYPE); 
             const response = await fetch(`https://www.omdbapi.com/?s=${encodeSearch}&type=series&apikey=${OMDB_API_KEY}`);
             const data = await response.json();
 
             if (data.Search && data.Search.length > 0) {
-                // Ensure at least MIN_POSTERS_COUNT posters are displayed
                 const initialMovies = data.Search.slice(0, MIN_POSTERS_COUNT);
                 setMovies(initialMovies);
-                // Fetch more movies if less than MIN_POSTERS_COUNT
                 if (initialMovies.length < MIN_POSTERS_COUNT) {
                     await fetchMoreMovies(data.Search.length);
                 }
@@ -36,12 +36,16 @@ const Series = () => {
                 setError('No series found.');
             }
         } catch (err) {
-            setError('Failed to fetch series data.');
             console.error(err);
+            setError('Failed to fetch series data. Please check your internet connection');
+        }
+        finally{
+            setLoading(false)
         }
     };
 
     const fetchMoreMovies = async (startIdx) => {
+        setLoading(true); 
         try {
             let currentMovies = [...movies];
             let page = 2;
@@ -55,26 +59,30 @@ const Series = () => {
             }
             setMovies(currentMovies.slice(0, MIN_POSTERS_COUNT));
         } catch (err) {
-            console.error('Failed to fetch additional movies.', err);
+            console.error('Failed to fetch additional series.', err);
+        }
+        finally{
+        setLoading(false); 
+            
         }
     };
 
     const handleMovieClick = async (imdbID) => {
-        setLoading(true); // Start loading
+        setLoading(true); 
         try {
             const response = await fetch(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${imdbID}&plot=full`);
             const data = await response.json();
 
-            setSelectedMovie(data); // Store selected movie details in state
+            setSelectedMovie(data); 
         } catch (err) {
             console.error('Failed to fetch series details.', err);
         } finally {
-            setLoading(false); // Stop loading
+            setLoading(false); 
         }
     };
 
     const handleCloseDetails = () => {
-        setSelectedMovie(null); // Reset selected movie details state
+        setSelectedMovie(null); 
     };
 
     const handleSearchChange = (e) => {
@@ -88,7 +96,7 @@ const Series = () => {
             return;
         }
         setSelectedMovie(null);
-        setLoading(true); // Start loading
+        setLoading(true)
         try {
             const encodeSearch = encodeURIComponent(searchTerm.trim()); // Encode search term
             const response = await fetch(`https://www.omdbapi.com/?s=${encodeSearch}&apikey=${OMDB_API_KEY}`);
@@ -99,18 +107,19 @@ const Series = () => {
                 setError('');
             } else {
                 setMovies([]);
-                setError('No series found. Please check the spelling and try again.');
+                setError('Please check the spelling and try again.');
             }
         } catch (err) {
             setError('Please check your internet connection.');
             console.error('Error searching for movies:', err);
         } finally {
-            setLoading(false); // Stop loading
+            setLoading(false); 
         }
     };
 
     return (
         <div className='movies'>
+            <HiddenComponent>
             <form onSubmit={handleSubmitSearch} className="forms">
                 <div className="movie_input">
                     <input
@@ -121,18 +130,19 @@ const Series = () => {
                         className='inputs'
                     />
                     <button className="movie_btn" type="submit">
-                        <i><Search /></i>
+                        <i className='search_icon'><Search /></i>
                     </button>
                 </div>
             </form>
-            {error && <p>{error}</p>}
+            </HiddenComponent>
+            <div className='contactcontent3'>Series</div>
+            {error && <p className='error'>{error}</p>}
             {loading ? (
-                <p>Loading...</p>
+                <div className='loader'></div>
             ) : selectedMovie ? (
                 <PosterDetails selectedMovie={selectedMovie} handleCloseDetails={handleCloseDetails} />
             ) : (
                 <div className='cards_parent'>
-                    <div className='contactcontent3'>Series</div>
                     <div className='cardslist'>
                         {movies.length > 0 ? (
                             movies.map(movie => (
