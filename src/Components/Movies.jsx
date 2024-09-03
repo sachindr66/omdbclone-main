@@ -4,9 +4,9 @@ import { Search } from '@mui/icons-material';
 import PosterDetails from './PosterDetails';
 import HiddenComponent from './HiddenComponent';
 
-const OMDB_API_KEY = '31edf87f'; // Replace with your actual OMDB API key
-const MIN_POSTERS_COUNT = 120; // Minimum number of posters to display
-const MOVIE_TYPE = 'movie'; // Filter by movie type
+const OMDB_API_KEY = '31edf87f'; 
+const MIN_POSTERS_COUNT = 120; 
+const MOVIE_TYPE = 'movie';
 
 const Movies = () => {
     const [movies, setMovies] = useState([]);
