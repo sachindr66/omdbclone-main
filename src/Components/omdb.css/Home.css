@@ -45,6 +45,9 @@
   /* animation-fill-mode: forwards; */
 }
 
+
+
+
 .heading1 {
   font-size: 3rem;
   text-align: center;
@@ -66,10 +69,26 @@
   max-width: 800px;
   margin: auto;
   background: linear-gradient(#fff, #fff) padding-box,
-    linear-gradient(180deg, #efc42c, #f35748 57.29%, #ee6abc) border-box;
+  linear-gradient(180deg, #efc42c, #f35748 57.29%, #ee6abc) border-box;
   border: 2px solid transparent;
   position: relative;
   border-image-slice: 1;
+  animation: border-flow 5s infinite linear;
+}
+
+@keyframes border-flow {
+  0% {
+    background: linear-gradient(#fff, #fff) padding-box,
+      linear-gradient(180deg, #efc42c, #f35748 57.29%, #ee6abc) border-box;
+  }
+  50% {
+    background: linear-gradient(#fff, #fff) padding-box,
+      linear-gradient(180deg, #ee6abc, #f35748 57.29%, #efc42c) border-box;
+  }
+  100% {
+    background: linear-gradient(#fff, #fff) padding-box,
+      linear-gradient(180deg, #efc42c, #f35748 57.29%, #ee6abc) border-box;
+  }
 }
 
 .main_input::placeholder{
@@ -281,15 +300,16 @@ button{
 .hidden-component {
   width: 100%;
   opacity: 0;
+  display: block;
   width: 100%;
-  transform: scale(1.1) translate(20px);
+  transform: scale(0.9) translateY(40px);
   /* transform: scale(1.1) translate(20px); Start with a slight offset */
   transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out; 
 }
 
 .hidden-component.visible {
   opacity: 1;
-  transform:scale(1) translate(0);  /* Slide in smoothly */
+  transform:scale(1) translateY(0);  /* Slide in smoothly */
 }
 @media screen and (max-width: 768px) {
   .heading {

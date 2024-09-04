@@ -96,12 +96,15 @@ const Home = () => {
   return (
     <React.Fragment>
       <div className="parent">
+        <HiddenComponent>
         <div className="headingparent">
           <h1 className="heading">WELCOME TO MY WEBSITE</h1>
           <p className="heading1">SEARCH MOVIE POSTER</p>
         </div>
+        </HiddenComponent>
         <div className="omdbsearchparent">
           <form onSubmit={onSubmit} className="form">
+        <HiddenComponent>
             <div className="searchinput" >
               <i className="search_icon" >
                 <SearchIcon />
@@ -112,11 +115,12 @@ const Home = () => {
                 value={search}
                 onChange={onInputChange}
                 placeholder="Search by title (movies, series, etc.)"
-              />
+                />
               <button className="omdbbtn" type="submit">
                 Search
               </button>
             </div>
+        </HiddenComponent>
           </form>
           {errorMsg && <p className="error">{errorMsg}</p>}
           <div className="cardslist">
@@ -177,11 +181,11 @@ const Home = () => {
             )}
           </div>
         </div>
-        <div className="carousel">
         <HiddenComponent>
+        <div className="carousel">
           <Carousel />
-        </HiddenComponent>
         </div>
+        </HiddenComponent>
         <HiddenComponent>
         <div className="topratedmovies">
           <TopratedMovies />

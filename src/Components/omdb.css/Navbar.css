@@ -10,7 +10,7 @@
 .logo{
     -webkit-text-fill-color: transparent;
     background-image: linear-gradient(90.4deg, #efc42c -21.68%, #f35748 55.26%, #ee6abc 134.07%);
-    /* -webkit-background-clip: text; */
+    -webkit-background-clip: text;
     background-clip: text;
     font-weight:900;
     cursor: pointer;
