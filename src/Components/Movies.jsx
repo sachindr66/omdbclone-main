@@ -4,7 +4,7 @@ import { Search } from '@mui/icons-material';
 import PosterDetails from './PosterDetails';
 import HiddenComponent from './HiddenComponent';
 
-const OMDB_API_KEY = '31edf87f'; 
+const OMDB_API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 const MIN_POSTERS_COUNT = 120; 
 const MOVIE_TYPE = 'movie';
 
@@ -160,9 +160,9 @@ const Movies = () => {
                                                     <p className="info">imdbID: {movie.imdbID}</p>
                                                     <p className="info">Year: {movie.Year}</p>
                                                 </div>
-                                                <p className='title' onClick={() => handleMovieClick(movie.imdbID)}>
+                                                <div className='title' onClick={() => handleMovieClick(movie.imdbID)}>
                                                     <h3>{movie.Title}</h3>
-                                                </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -73,7 +73,7 @@ const Contact = () => {
                 Reach out to us for all your Enquiries
               </div>
               <div className="cntactdetails">
-                <label for="name">Name</label>
+                <label htmlFor="name">Name</label>
                 <input
                   type="e-mail"
                   name="name"

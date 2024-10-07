@@ -4,7 +4,7 @@ import axios from "axios";
 import { ArrowDownward } from "@mui/icons-material";
 import PosterDetails from "./PosterDetails";
 
-const OMDB_API_KEY = '31edf87f'; 
+const OMDB_API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 const POSTERS_COUNT = 100;
 const TOP_RATED_MOVIES = [
   'K.G.F', 'Kantara', 'Inception', 'Interstellar', 'The Dark Knight',

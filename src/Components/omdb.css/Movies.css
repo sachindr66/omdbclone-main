@@ -73,7 +73,7 @@
   background-image: linear-gradient(
     90.4deg,
     #efc42c -21.68%,
-    #f35748 55.26%,
+    #f35748 60.26%,
     #ee6abc 134.07%
   );
 }
@@ -127,7 +127,7 @@
 }
 
 .cards_title {
-  border-left: 6px solid rgb(231, 159, 249);
+  border-left: 6px solid #e79ff9;
   border-radius: 8%;
   padding: 4px;
 }

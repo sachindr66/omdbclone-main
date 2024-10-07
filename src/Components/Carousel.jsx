@@ -59,10 +59,10 @@ const Carousel = () => {
     <div className="sliders">
       <div>
         <Slider {...settings}>
-          {data.map((obj) => {
+          {data.map((obj,index) => {
             let { name, year, description, type, quality, image } = obj;
             return (
-              <dive className="carosel-card">
+              <div key={index} className="carosel-card">
                 <div className="movie-card">
                   <div className="movie-card1">
                     <div className="movie-image">
@@ -82,7 +82,7 @@ const Carousel = () => {
                     </div>
                   </div>
                 </div>
-              </dive>
+              </div>
             );
           })}
         </Slider>

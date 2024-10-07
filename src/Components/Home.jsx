@@ -10,6 +10,8 @@ import TopratedMovies from "./TopratedMovies";
 import PosterDetails from "./PosterDetails";
 import HiddenComponent from "./HiddenComponent";
 
+const OMDB_API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+
 const Home = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
@@ -39,7 +41,7 @@ const Home = () => {
 
     try {
       const response = await axios.get(
-        `https://www.omdbapi.com/?s=${encodeSearch}&apikey=31edf87f`
+        `https://www.omdbapi.com/?s=${encodeSearch}&apikey=${OMDB_API_KEY}`
       );
       const allData = response.data;
 
